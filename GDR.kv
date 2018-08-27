@@ -1,0 +1,146 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import BoxLayout kivy.uix.boxlayout
+
+MyScreenManager:
+    transition: FadeTransition()
+    LoginScreen:
+    UserScreen:
+    CreateDayData:
+
+<LoginScreen>:
+    name: 'LoginScreen'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: Username
+            text: 'Username'
+        TextInput:
+            id: Input_Username
+            text: 'Username'
+            multiline: False
+        Label:
+            id: Password
+            text: 'Password'
+        TextInput:
+            id: Input_Password
+            text: '********'
+            password: True
+            multiline: False
+        Button:
+            text: 'Login'
+            font_size: 30
+            on_release: root.check_password()
+
+<UserScreen>:
+    name: 'UserScreen'
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+
+        Label:
+            id: Userid
+            text: 'Welcome User ID'
+        Button:
+            text: 'Create Day Data'
+            font_size: 30
+            on_release: app.root.current = 'CreateDayData'
+        Button:
+            text: 'Logout'
+            font_size: 30
+            on_release: app.root.current = 'LoginScreen'
+
+<CreateDayData>:
+    name: 'CreateDayData'
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing:10
+        Label:
+            id: Userid
+            text: 'Create Day Data'
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Date
+                text: 'Date'
+            TextInput:
+                id: Date_in
+                text: 'dd/mm/yyyy'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Receiver
+                text: 'Sold to whom'
+            TextInput:
+                id: Receiver_in
+                text: 'Sold to whom'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Item_name
+                text: 'Item Name'
+            TextInput:
+                id: Item_name_in
+                text: 'Item Name'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Item_amount
+                text: 'Item Amount'
+            TextInput:
+                id: Item_amount_in
+                text: 'Item Amount'
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Item_qty
+                text: 'Item quantity'
+            TextInput:
+                id: Item_qty_in
+                text: 'Item quantity'
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Location
+                text: 'Item sold location'
+            TextInput:
+                id: Location_in
+                text: 'Item sold location'
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Rno
+                text: 'Receipt Number'
+            TextInput:
+                id: Rno_in
+                text: 'Receipt Number'
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Sale_type
+                text: 'Sale by Cash/Credit'
+            TextInput:
+                id: Sale_type_in
+                text: 'Sale by Cash/Credit'
+
+
+        Button:
+            text: 'Add'
+            on_release: print (Date_in.text, Receiver_in.text, Item_name_in.text,Item_amount_in.text,Item_qty_in.text,Location_in.text,Rno_in.text,Sale_type_in.text)
+            on_release: app.root.current = 'UserScreen'
+
+        Button:
+            text: 'Logout'
+            font_size: 30
+            on_release: app.root.current = 'LoginScreen'
