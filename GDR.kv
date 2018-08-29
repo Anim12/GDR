@@ -6,6 +6,7 @@ MyScreenManager:
     LoginScreen:
     UserScreen:
     CreateDayData:
+    ViewDayData:
 
 <LoginScreen>:
     name: 'LoginScreen'
@@ -39,11 +40,18 @@ MyScreenManager:
 
         Label:
             id: Userid
-            text: 'Welcome User ID'
+            text: 'Welcome '
+
         Button:
             text: 'Create Day Data'
             font_size: 30
             on_release: app.root.current = 'CreateDayData'
+
+        Button:
+            text: 'View Day Data'
+            font_size: 30
+            on_release: app.root.current = 'ViewDayData'
+
         Button:
             text: 'Logout'
             font_size: 30
@@ -139,6 +147,38 @@ MyScreenManager:
             text: 'Add'
             on_release: print (Date_in.text, Receiver_in.text, Item_name_in.text,Item_amount_in.text,Item_qty_in.text,Location_in.text,Rno_in.text,Sale_type_in.text)
             on_release: app.root.current = 'UserScreen'
+
+        Button:
+            text: 'Logout'
+            font_size: 30
+            on_release: app.root.current = 'LoginScreen'
+
+<ViewDayData>:
+    name: 'ViewDayData'
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing:10
+        Label:
+            id: Userid
+            text: 'View Day Data'
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                id: Date
+                text: 'Enter Date'
+            TextInput:
+                id: Date_in
+                text: 'dd/mm/yyyy'
+
+        Button:
+            text: 'View'
+            on_release: print (Date_in.text)
+            #on_release: app.root.current = 'ViewReport'
+
+        Button:
+            text: 'Create Day Data'
+            on_release: app.root.current = 'CreateDayData'
 
         Button:
             text: 'Logout'
